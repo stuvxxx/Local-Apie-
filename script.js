@@ -2,12 +2,20 @@ const uList = document.getElementById("ul-list")
 const input = document.getElementById("item-text")
 const button = document.getElementById("button")
 const title = document.getElementById("title")
-
-
+const tri1 = document.getElementById("triangle1")
+const tri2 = document.getElementById("triangle2")
+const tri3 = document.getElementById("triangle3")
+const aap = document.getElementById("check")
+const squares = document.getElementById("squares")
+let order = 0
+let squareCount = 0
 // GET LIST IN DOM //
 getListInDom = () => {       
   getTodoList().then(x => x.map((list) => {
     // add stuff to dom//
+ const square = document.createElement("div")
+ squares.appendChild(square)
+ square.id = "square" + list.description
   const listCont = document.createElement("li")
   uList.appendChild(listCont)
   const listItem = document.createElement("p")
@@ -31,30 +39,55 @@ getListInDom = () => {
     checkContainer.appendChild(checkBox)
   const checkMark = document.createElement("span")
       checkMark.className = "checkmark"
+      checkMark.id = "check"
     checkContainer.appendChild(checkMark)
     // read 'done' from api //
   if(list.done) {
       listItem.style.textDecoration = "line-through"; 
       checkBox.checked = true      
+      square.style.background = "rgb(51, 119, 62)"
   }
     // check/uncheck-funtion and add changes to dom+api //
   bakkieImg.addEventListener("click", () => {
-    console.log("clicked " + list.description)
     bakkieImg.parentElement.remove()
     removeThing(list.description)
   })
   checkBox.addEventListener("change", () => {
-    console.log("checked")   
     if(checkBox.checked) {
       listItem.style.textDecoration = "line-through";
+      const square = document.getElementById("square" + list.description)
+      square.style.background = "rgb(51, 119, 62)"
       list.done = true
       changeToTrue(list._id, list.description)
-      console.log(list)
+      order++
+      console.log(order)
     } else {
       listItem.style.textDecoration = "none";
+      const square = document.getElementById("square" + list.description)
+      square.style.background = "rgb(128, 38, 38)"
       list.done = false
       changeToFalse(list._id, list.description)
-      console.log(list)   
+      order++
+      console.log(order)
+    }
+      // styling for triangles //
+    switch (order) {
+      case 1:
+        tri1.style.borderTop = "20px solid rgb(128, 38, 38)"
+        tri2.style.borderTop = "20px solid  #d9e6b6"
+        tri3.style.borderTop = "20px solid rgb(50, 151, 89)"
+        break;
+        case 2:
+        tri1.style.borderTop = "20px solid  #d9e6b6"
+        tri2.style.borderTop = "20px solid rgb(50, 151, 89)"
+        tri3.style.borderTop = "20px solid rgb(128, 38, 38)"
+        break;
+        case 3:
+         tri1.style.borderTop = "20px solid rgb(50, 151, 89)"
+         tri2.style.borderTop = "20px solid rgb(128, 38, 38)"
+         tri3.style.borderTop = "20px solid  #d9e6b6"
+        order = 0
+        break;
     }
   })
     // task edit + add changes to api //
@@ -84,6 +117,7 @@ changeToFalse = async(id, what) => {
 // ADD ITEMS TO LIST //
 addItem = async(thingToDo) => {
   await postInfo({description: thingToDo, done: false})
+
 } 
 // REMOVE ITEMS FROM LIST //
 removeThing = async (thing) => {
@@ -93,6 +127,7 @@ removeThing = async (thing) => {
     }
   }))
 }
+
 // LITTLE STYLING //
 button.addEventListener("mouseover", () => {
     title.style.textShadow = "#FC0 1px 0 10px";
@@ -110,7 +145,13 @@ addItem(newTask)
   while (uList.firstChild) {
       uList.removeChild(uList.firstChild);
   }
+  while (squares.firstChild) {
+    squares.removeChild(squares.firstChild);
+}
   getListInDom()
 }})
 // FINAL LOAD // 
 getListInDom()
+
+
+

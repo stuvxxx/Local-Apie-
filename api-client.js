@@ -27,6 +27,7 @@ async function postInfo(data) {
 }
 //DELETE INFO//
 async function deleteInfo(id) {
+  squares.removeChild(squares.lastChild);
     await fetch(urlDel + id, {
      method: "DELETE",
      headers: {

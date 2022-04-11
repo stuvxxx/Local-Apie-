@@ -1,12 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,58,1) 67%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(36, 39, 36) 93%);
 }
 
-h1 {
-    font-size: 20px;
-    text-align: center;
-}
 
 .apie {
     width: 100%;
@@ -22,17 +21,75 @@ h1 {
     margin-right: 25%;
     max-width: 50%;
     height: auto;
-    border: 2px black solid; 
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.h2cont {
+    display: flex;
+    justify-content: center;
+    width: inherit;
+    background-color: #312020;
+    text-transform: uppercase;
+    box-shadow: rgba(151, 151, 197, 0.274) 0px 30px 60px -12px inset, rgba(5, 5, 5, 0.507) 0px 18px 36px -18px inset;
 }
 
-
 h2 {
-    font-size: 100px;
+    align-self: center;
+    position: relative;
+    font-family: 'Righteous', cursive;
+    font-size: 50px;
     text-align: center;
     grid-area: 1 / 1 / 2 / 5;
     text-shadow: none;
-    box-shadow: rgba(151, 151, 197, 0.274) 0px 30px 60px -12px inset, rgba(181, 187, 145, 0.507) 0px 18px 36px -18px inset;
+}
+
+.triangle1 {
+        position: relative;
+        width: 0px; 
+        height: 0px; 
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 20px solid rgb(50, 151, 89);
+        transform: translate(30px, 60px);
+        transition: 300ms;
+}
+
+.triangle2 {
+    position: relative;
+    width: 0px; 
+    height: 0px; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid rgb(128, 38, 38);  
+    transform: translate(-10px, 40px);
+    transition: 300ms;
+
+}
+
+.triangle3 {
+    position: relative;
+    width: 0px; 
+    height: 0px; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid  #d9e6b6;  
+    transform: translate(-50px, 20px);
+    transition: 300ms;
+}
+
+.square-grid { 
+        margin-left: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 20px);
+        grid-template-rows: repeat(4, 20px);
+        grid-column-gap: 1px;
+        grid-row-gap: 1px;
+        margin-bottom: 1px;
+        transform: rotate(270deg);
+        
+}
+
+.square-grid div {
+    background-color: rgb(128, 38, 38);
+    transition: 300ms;
 }
 
 
@@ -48,11 +105,9 @@ grid-template-columns: 100px 1fr 75px;
 grid-template-rows: 30px 70px;
 grid-column-gap: 2px;
 grid-row-gap: 2px;
-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 .listItem {
-    font-family:Arial, Helvetica, sans-serif;
     font-size: 30px;
     grid-area: 1 / 2 / 3 /2;
     padding-left: 30px;
@@ -166,3 +221,5 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3)
 .input-but:hover {
     box-shadow: none;
 } 
+
+
